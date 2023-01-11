@@ -18,6 +18,11 @@ did firmware run successfully or not. If we can do it remotely in an
 automated way, then we can reflash and test firmware binaries from any
 software CI of our choice - Github Actions, Jenkins, or others.
 
+It is not trivial to build such system ad hoc. The alternative is to use
+one of the commercial hardware test systems (or EBFs, Embedded Board Farms),
+though such commercial solutions are quite expensive. This guide shows how to
+build a home-grown EBF very quickly, easily and almost at no cost.
+
 ## The solution: ESP32 + vcon.io
 
 And there is a simple and inexpensive way to do it using the https://vcon.io
