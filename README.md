@@ -59,6 +59,9 @@ adjust the "Wiring" step according to your device's pinout.
 - Follow [Network Setup](https://vcon.io/docs/#network-setup) to register ESP32 on https://dash.vcon.io
 - Follow [Wiring](https://vcon.io/docs/#quick-start-guide) to wire ESP32 to your device
 
+This is how a configured device breadboard setup may look like:
+![](images/breadboard.png)
+
 This is how a configured device dashboard looks like:
 ![](images/screenshot.png)
 
