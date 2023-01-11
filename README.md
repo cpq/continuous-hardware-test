@@ -1,4 +1,4 @@
-# Continuous microcontroller test implementation guide
+# Continuous hardware test guide
 
 This guide explains how to implement a continous integration
 hardware test for microcontrollers (hardware CI). It is a continuation to my
