@@ -18,6 +18,8 @@ did firmware run successfully or not. If we can do it remotely in an
 automated way, then we can reflash and test firmware binaries from any
 software CI of our choice - Github Actions, Jenkins, or others.
 
+## The solution: ESP32 + vcon.io
+
 And there is a simple and inexpensive way to do it using the https://vcon.io
 service:
 
