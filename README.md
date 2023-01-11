@@ -38,10 +38,10 @@ to manage, it is completely free.
 
 ## Configuring and wiring ESP32
 
-It is possible to use any ESP32 or ESP32C3 device. Our recommendation is
-ESP32C3 XIAO ([buy on Digikey](https://www.digikey.ie/en/products/detail/seeed-technology-co-ltd/113991054/16652880))
-because of low price (about 5 EUR) and small form factor. Wish it had status
-LED, too..
+Take any ESP32 or ESP32C3 device - a devboard, a module, or your custom device.
+Our recommendation is ESP32C3 XIAO devboard
+([buy on Digikey](https://www.digikey.ie/en/products/detail/seeed-technology-co-ltd/113991054/16652880))
+because of its low price (about 5 EUR) and small form factor.
 
 We're going to assume that the target device is a Raspberry Pi
 [W5500-EVB-Pico](https://docs.wiznet.io/Product/iEthernet/W5500/w5500-evb-pico)
@@ -50,7 +50,7 @@ adjust the "Wiring" step according to your device's pinout.
 
 - Follow [Flashing ESP32](https://vcon.io/docs/#flashing-esp32) to flash your ESP32
 - Follow [Network Setup](https://vcon.io/docs/#network-setup) to register ESP32 on https://dash.vcon.io
-- Follow [Wiring](https://vcon.io/docs/#raspberrypi-pico) to wire ESP32 to your device
+- Follow [Wiring](https://vcon.io/docs/#quick-start-guide) to wire ESP32 to your device
 
 Now, you can reflash your device with a single command:
 
@@ -97,7 +97,34 @@ the public. The right way to go is to:
 3. Give it a name, `VCON_API_KEY`, paste the value into a "Secret" box, click "Add secret"
 
 One of the example projects builds firmware for the RP2040-W5500 board, so
-let's flash it using a `curl` command and a saved API key:
+let's flash it using a `curl` command and a saved API key. The best way is
+to add a Makefile target for testing, and let Github Actions (our software CI)
+call it:
+
+https://github.com/cpq/bare-metal-programming-guide/blob/8d419f5e7718a8dcacad2ddc2f899eb75f64271e/.github/workflows/test.yml#L18
+
+Note that we pass a `VCON_API_KEY` environment variable to `make`. Also note
+that we're invoking `test` Makefile target, which should build and test our
+firmware. Here is the `test` Makefile target:
+
+https://github.com/cpq/bare-metal-programming-guide/blob/4fd72e67c380e3166a25c27b47afb41d431f84b9/step-7-webserver/pico-w5500/Makefile#L32-L37
+
+Explanation:
+- line 34: The `test` target depends on `build`, so we always build firmware
+  before testing
+- line 35: We flash firmware remotely. The `--fail` flag to `curl` utility
+  makes it fail if the response from the server is not successful (not HTTP 200
+  OK)
+- line 36: Capture UART log for 5 seconds and save it to `/tmp/output.txt`
+- line 37: Search for the string `Ethernet: up` in the output, and fail if it
+  is not found
+
+Done! Now, our automatic tests ensure that the firmware can be built, that is
+it bootable, that it initialises the network stack correctly.  This mechanism
+can be easily extended: just add more complex actions in your firmware binary,
+print the result to the UART, and check for the expected output in the test.
+
+Happy testing!
 
 ## About the author
 
