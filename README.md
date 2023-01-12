@@ -60,7 +60,7 @@ adjust the "Wiring" step according to your device's pinout.
 - Follow [Wiring](https://vcon.io/docs/#quick-start-guide) to wire ESP32 to your device
 
 This is how a configured device breadboard setup may look like:
-![](images/breadboard.png)
+![](images/breadboard.webp)
 
 This is how a configured device dashboard looks like:
 ![](images/screenshot.png)
