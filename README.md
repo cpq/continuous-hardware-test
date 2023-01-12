@@ -71,10 +71,10 @@ Now, you can reflash your device with a single command:
 curl -su :$API_KEY 'https://dash.vcon.io/api/v3/devices/$ID/ota' --data-binary @fw.bin
 ```
 
-Where `$API_KEY` is the dash.vcon.io authentication key, `$ID` is the
+Where `API_KEY` is the dash.vcon.io authentication key, `ID` is the
 registered device number, and `fw.bin` is the name of the newly built firmware.
-You can find out both by clicking on the "action" -> "copy API command to
-clipboard" on a dash.vcon.io dashboard.
+You can get the `API_KEY` by clicking on the "api key" link on a dashboard.
+The device ID is listed in the table.
 
 We can also capture device output with a single command: 
 
