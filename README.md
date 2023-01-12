@@ -130,6 +130,25 @@ Explanation:
 - line 37: Search for the string `Ethernet: up` in the output, and fail if it
   is not found
 
+This is the example output of the `make test` command described above:
+
+```sh
+$ make test
+curl --fail ...
+{"success":true,"written":59904}
+curl --fail ...
+3f3 2 main.c:65:main                    Ethernet: down
+7d7 1 mongoose.c:6760:onstatechange     Link up
+7e5 3 mongoose.c:6843:tx_dhcp_discover  DHCP discover sent
+7e8 2 main.c:65:main                    Ethernet: up
+81d 3 mongoose.c:6726:arp_cache_add     ARP cache: added 192.168.0.1 @ 90:5c:44:55:19:8b
+822 2 mongoose.c:6752:onstatechange     READY, IP: 192.168.0.24
+827 2 mongoose.c:6753:onstatechange            GW: 192.168.0.1
+82d 2 mongoose.c:6755:onstatechange            Lease: 86336 sec
+bc3 2 main.c:65:main                    Ethernet: up
+fab 2 main.c:65:main                    Ethernet: up
+```
+
 Done! Now, our automatic tests ensure that the firmware can be built, that is
 it bootable, that it initialises the network stack correctly.  This mechanism
 can be easily extended: just add more complex actions in your firmware binary,
