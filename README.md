@@ -63,7 +63,7 @@ This is how a configured device breadboard setup may look like:
 ![](images/breadboard.webp)
 
 This is how a configured device dashboard looks like:
-![](images/screenshot.png)
+![](images/screenshot.webp)
 
 Now, you can reflash your device with a single command:
 
